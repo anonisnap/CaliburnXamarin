@@ -14,6 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\NavigationView.xaml.cs">
+      <DependentUpon>NavigationView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SimpleCounterView.xaml.cs">
       <DependentUpon>SimpleCounterView.xaml</DependentUpon>
     </Compile>
@@ -26,7 +29,7 @@
     <EmbeddedResource Update="Views\SimpleCounterView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ShellView.xaml">
+    <EmbeddedResource Update="Views\NavigationView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SingletonView.xaml">
