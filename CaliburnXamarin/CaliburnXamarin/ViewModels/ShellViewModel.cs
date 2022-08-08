@@ -11,23 +11,27 @@ namespace CaliburnXamarin.ViewModels
 
         #region Properties
         public string PageInformation { get; set; }
+        public string NavSimpleCounterButton { get; set; }
+        public string NavSingletonCounterButton { get; set; }
         #endregion
 
-        public ShellViewModel(INavigationService navService)
-        {
-            _navService = navService;
+        public ShellViewModel(INavigationService navigationService)
 
-            PageInformation = "Welcome to Xamarin.Forms!";
+        {
+            _navService = navigationService;
+
+            PageInformation = "This is the Main Navigation Screen";
+            NavSimpleCounterButton = "Simple Counter";
+            NavSingletonCounterButton = "Singleton Counter";
         }
 
-
         #region User Navigation Methods
-        public async void NavOtherButton( )
+        public async void NavSimpleCounter( )
         {
             await _navService.NavigateToViewModelAsync<SimpleCounterViewModel>( );
         }
 
-        public async void NavSingleton( )
+        public async void NavSingletonCounter( )
         {
             Screen newView = IoC.Get<SingletonCounterViewModel>( );
             await _navService.NavigateToViewModelAsync<SingletonCounterViewModel>(newView);

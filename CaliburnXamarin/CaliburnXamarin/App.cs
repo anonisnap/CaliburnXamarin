@@ -28,9 +28,8 @@ namespace CaliburnXamarin
             // Register all the Views and ViewModels needed
             RegisterViewsAndViewModels( );
 
-            // Create the Base View as a ShellView
-            // Show the View to the User
-            DisplayRootView<ShellView>( );
+            // Create the Base View and show the View to the User
+            _ = DisplayRootView<NavigationView>( );
         }
 
         /// <summary>

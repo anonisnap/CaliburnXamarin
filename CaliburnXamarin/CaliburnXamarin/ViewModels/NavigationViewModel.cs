@@ -27,14 +27,13 @@ namespace CaliburnXamarin.ViewModels
         #region User Navigation Methods
         public async void NavSimpleCounter( )
         {
-            // Creates a new SimpleCounterViewModel every time the Navigation is called
             await _navService.NavigateToViewModelAsync<SimpleCounterViewModel>( );
         }
 
         public async void NavSingletonCounter( )
         {
-            var view = IoC.Get<SingletonCounterViewModel>( );
-            await _navService.NavigateToViewModelAsync<SingletonCounterViewModel>(view);
+            Screen newView = IoC.Get<SingletonCounterViewModel>( );
+            await _navService.NavigateToViewModelAsync<SingletonCounterViewModel>(newView);
         }
         #endregion
     }

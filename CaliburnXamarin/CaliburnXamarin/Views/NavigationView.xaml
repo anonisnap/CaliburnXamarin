@@ -9,21 +9,24 @@
             <Label 
                 x:Name="PageInformation"
                 Text="{Binding PageInformation}"
-                VerticalOptions="StartAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" 
+                Margin="10"/>
 
             <Button
+                x:Name="NavSimpleCounterButton"
                 Text="{Binding NavSimpleCounterButton}"
                 cal:Message.Attach="NavSimpleCounter"
                 HorizontalOptions="CenterAndExpand"
                 Margin="5"/>
-            
+
             <Button
+                x:Name="NavSingletonCounterButton"
                 Text="{Binding NavSingletonCounterButton}"
                 cal:Message.Attach="NavSingletonCounter"
                 HorizontalOptions="CenterAndExpand"
                 Margin="5"/>
 
-            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
