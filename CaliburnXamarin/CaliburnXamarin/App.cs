@@ -38,8 +38,8 @@ namespace CaliburnXamarin
              */
 
             // Adding SingletonViewModel and SingletonView to the IoC Container to access them later
-            _unityContainer.RegisterType<SingletonViewModel>(TypeLifetime.Singleton);
-            _unityContainer.RegisterType<SingletonView>(TypeLifetime.Singleton);
+            _unityContainer.RegisterType<SingletonCounterViewModel>(TypeLifetime.Singleton);
+            _unityContainer.RegisterType<SingletonCounterView>(TypeLifetime.Singleton);
 
 
             // Create the Base View as a ShellView

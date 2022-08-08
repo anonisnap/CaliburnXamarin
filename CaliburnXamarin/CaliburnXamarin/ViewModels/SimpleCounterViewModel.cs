@@ -2,18 +2,26 @@
 
 namespace CaliburnXamarin.ViewModels
 {
-    public class SingletonViewModel : Screen
+    public class SimpleCounterViewModel : Screen
     {
+        #region Field Variables
         private int _count;
+        #endregion
+
+        #region Properties
+        public string PageInformation { get; set; }
 
         public string CountNumber
         {
             get => $"Click Count: {_count}";
             private set => _ = value;
         }
+        #endregion
 
-        public SingletonViewModel( )
+        public SimpleCounterViewModel( )
         {
+            PageInformation = "This view is a Simple Counter View. It has been set up with each opening being a new instance. This does not keep track of counts";
+
             _count = 0;
         }
 
@@ -23,5 +31,4 @@ namespace CaliburnXamarin.ViewModels
             NotifyOfPropertyChange(( ) => CountNumber);
         }
     }
-
 }

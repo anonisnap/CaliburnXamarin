@@ -7,13 +7,20 @@
     <ContentPage.Content>
         <StackLayout>
             <Label
-                x:Name="Text"
+                x:Name="PageInformation"
                 HorizontalOptions="CenterAndExpand"
-                Text="{Binding Text}"
-                VerticalOptions="CenterAndExpand" />
+                Text="{Binding PageInformation}"
+                VerticalOptions="CenterAndExpand" 
+                Margin="0, 10"/>
 
-            <Button cal:Message.Attach="NavOtherButton" Text="Other Button" />
-            <Button cal:Message.Attach="NavSingleton" Text="Singleton Button" />
+            <Button 
+                Text="Simple Button" 
+                cal:Message.Attach="NavOtherButton" />
+
+            <Button 
+                Text="Singleton Button" 
+                cal:Message.Attach="NavSingleton" />
+
         </StackLayout>
     </ContentPage.Content>
 

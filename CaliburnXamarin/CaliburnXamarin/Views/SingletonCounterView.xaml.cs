@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace CaliburnXamarin.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class OtherButtonView : ContentPage
+    public partial class SingletonCounterView : ContentPage
     {
-        public OtherButtonView( )
+        public SingletonCounterView( )
         {
             InitializeComponent( );
         }
