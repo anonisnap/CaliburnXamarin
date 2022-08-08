@@ -15,8 +15,9 @@ namespace CaliburnXamarin.ViewModels
 
         public ShellViewModel(INavigationService navService)
         {
-            PageInformation = "Welcome to Xamarin.Forms!";
             _navService = navService;
+
+            PageInformation = "Welcome to Xamarin.Forms!";
         }
 
 
