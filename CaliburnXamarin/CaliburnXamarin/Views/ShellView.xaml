@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="CaliburnXamarin.Views.ShellView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cal="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Xamarin.Forms">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                x:Name="Text"
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding Text}"
+                VerticalOptions="CenterAndExpand" />
+
+            <Button cal:Message.Attach="NavOtherButton" Text="Other Button" />
+            <Button cal:Message.Attach="NavSingleton" Text="Singleton Button" />
+        </StackLayout>
+    </ContentPage.Content>
+
+
+
+</ContentPage>
