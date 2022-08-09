@@ -47,7 +47,8 @@ namespace CaliburnXamarin
 			_ = _unityContainer.RegisterType<SingletonCounterView>(TypeLifetime.Singleton);
 
 			// Note List
-			_ = _unityContainer.RegisterType<NotesViewModel>(TypeLifetime.Singleton, Invoke.Constructor(Resolve.Parameter( )));
+			_ = _unityContainer.RegisterType<NotesViewModel>(TypeLifetime.Singleton,
+				Invoke.Constructor(Resolve.Parameter( ), Resolve.Parameter( )));
 			_ = _unityContainer.RegisterType<NotesView>(TypeLifetime.Singleton);
 
 			// New Note Popup | Does this do anything?

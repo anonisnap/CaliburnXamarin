@@ -1,11 +1,7 @@
 ﻿using Caliburn.Micro;
-using Caliburn.Micro.Xamarin.Forms;
 using CaliburnXamarin.Model;
 using CaliburnXamarin.Services;
 using CaliburnXamarin.ViewModels.Popups;
-using CaliburnXamarin.Views.Popups;
-using Rg.Plugins.Popup.Contracts;
-using Rg.Plugins.Popup.Services;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,20 +22,21 @@ namespace CaliburnXamarin.ViewModels
 		public string AddNewNoteButton { get; set; }
 
 		public string RemoveNoteButton { get; set; }
-
 		public ObservableCollection<Note> Notes { get; }
+
 
 		public Note SelectedNote { get; set; }
 		#endregion
 
-		public NotesViewModel(NavigationService navigationService)
+		public NotesViewModel(NavigationService navigationService, NotesModel model)
 		{
-			Notes = new ObservableCollection<Note>( );
 			PageInformation = "Temporary Notes";
 			AddNewNoteButton = "Add New";
 			RemoveNoteButton = "Remove";
 
 			_popNav = navigationService;
+
+			Notes = model.Notes;
 		}
 
 		public async void CreateNewNote( )
@@ -48,23 +45,23 @@ namespace CaliburnXamarin.ViewModels
 			NewNotePopupViewModel vm = IoC.Get<NewNotePopupViewModel>( );
 			await _popNav.NavigateToPopupViewModelAsync(vm);
 
-			return;
+			//return;
 			//Thread.Sleep(1000);
-			
-			// Get Message from the User via Prompt
-			string msg = await Application.Current.MainPage.DisplayPromptAsync("New Note", "Write your new note", accept: "Add", cancel: "Cancel");
 
-			Note n = new Note( )
-			{
-				Message = msg
-			};
+			//// Get Message from the User via Prompt
+			//string msg = await Application.Current.MainPage.DisplayPromptAsync("New Note", "Write your new note", accept: "Add", cancel: "Cancel");
+
+			//Note n = new Note( )
+			//{
+			//	Message = msg
+			//};
 
 
-			// Add Note to the Collection
-			Notes.Add(n);
+			//// Add Note to the Collection
+			//Notes.Add(n);
 
 			// Notify of changes
-			NotifyOfPropertyChange(( ) => Notes);
+			//NotifyOfPropertyChange(( ) => Notes);
 			NotifyOfPropertyChange(( ) => NoteCount);
 		}
 
@@ -86,23 +83,12 @@ namespace CaliburnXamarin.ViewModels
 
 			// Remove the Note
 			Notes.Remove(SelectedNote);
+			SelectedNote = null;
 
 			// Notify of changes
-			NotifyOfPropertyChange(( ) => Notes);
+			//NotifyOfPropertyChange(( ) => Notes);
 			NotifyOfPropertyChange(( ) => NoteCount);
 		}
 
-		protected override Task OnActivateAsync(CancellationToken cancellationToken)
-		{
-			// Load the notes
-
-			return base.OnActivateAsync(cancellationToken);
-		}
-		protected override Task OnDeactivateAsync(bool close, CancellationToken cancellationToken)
-		{
-			// Save the notes
-
-			return base.OnDeactivateAsync(close, cancellationToken);
-		}
 	}
 }

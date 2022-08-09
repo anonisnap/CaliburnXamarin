@@ -18,6 +18,8 @@ namespace CaliburnXamarin.Services
 			_navPage = navigationPage;
 			_curPage = navigationPage.CurrentPage;
 
+			// Adds the Methods below to the Corresponding methods in the NavigationPane
+			// Means these are called as well, when the NavigationPane Methods are called
 			_navPage.Pushed += onPushed;
 			_navPage.Popped += onPopped;
 			_navPage.PoppedToRoot += onPoppedToRoot;
@@ -42,29 +44,34 @@ namespace CaliburnXamarin.Services
 		{
 			try
 			{
+				// Find the View for the given ViewModel
 				var view = ViewLocator.LocateForModelType(viewModel.GetType( ), null, null);
 
+				// Bind the View and ViewModel together
 				ViewModelBinder.Bind(viewModel, view, null);
 
-
+				// if the View is NOT a PopupPage -> Throw an Exception
 				if ( !( view is PopupPage page ) )
 				{
 					throw new NotSupportedException($"{view.GetType( )} does not inherit from either {typeof(Page)} or {typeof(PopupPage)}.");
 				}
 
-				return _curPage.Navigation.PushPopupAsync(page, animated); // This is null?
+				return _curPage.Navigation.PushPopupAsync(page, animated);
 			}
 			catch ( Exception )
 			{
-
 				throw;
 			}
 		}
 
 		public Task NavigateToPopupAsync(PopupPage view, bool animated = true)
 		{
-			var model = ViewModelLocator.LocateForView(view);
-			ViewModelBinder.Bind(model, view, null);
+			// Find the ViewModel for the given View
+			var viewModel = ViewModelLocator.LocateForView(view);
+
+			// Bind the ViewModel and View
+			ViewModelBinder.Bind(viewModel, view, null);
+
 			return _navPage.Navigation.PushPopupAsync(view, animated);
 		}
 	}

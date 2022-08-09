@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using Caliburn.Micro.Xamarin.Forms;
+using CaliburnXamarin.Model;
 
 namespace CaliburnXamarin.ViewModels.Popups
 {
@@ -18,14 +19,21 @@ namespace CaliburnXamarin.ViewModels.Popups
 			BtnCancel = "Cancel";
 		}
 
-		public void AddNote( )
+		public async void AddNote( )
 		{
-			
+			Note n = new Note( )
+			{
+				Message = ""
+			};
+
+			IoC.Get<NotesModel>( ).AddNewNote(n);
+
+			await TryCloseAsync( );
 		}
 
-		public void Cancel( )
+		public async void Cancel( )
 		{
-
+			await TryCloseAsync( );
 		}
 	}
 }
