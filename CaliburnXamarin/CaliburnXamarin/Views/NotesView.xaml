@@ -28,7 +28,15 @@
 								Padding="5"
 								BackgroundColor="{AppThemeBinding Light=LightGray, Dark=DarkGray}">
 								<Label
-									Text="{Binding Message}"
+									Text="{Binding Title}"
+									TextColor="{AppThemeBinding Light=Black, Dark=White}"
+									FontAttributes="Bold"
+									HorizontalOptions="CenterAndExpand"
+									VerticalOptions="CenterAndExpand"
+									HorizontalTextAlignment="Center"
+									VerticalTextAlignment="Center"/>
+								<Label
+									Text="{Binding Description}"
 									TextColor="{AppThemeBinding Light=#090909, Dark=#E1E1E1}"
 									HorizontalOptions="CenterAndExpand"
 									VerticalOptions="CenterAndExpand"

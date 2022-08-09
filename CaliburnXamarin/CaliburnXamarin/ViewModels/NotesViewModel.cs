@@ -3,6 +3,7 @@ using CaliburnXamarin.Model;
 using CaliburnXamarin.Services;
 using CaliburnXamarin.ViewModels.Popups;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -37,7 +38,9 @@ namespace CaliburnXamarin.ViewModels
 			_popNav = navigationService;
 
 			Notes = model.Notes;
+			Notes.CollectionChanged += UpdateNoteCount;
 		}
+
 
 		public async void CreateNewNote( )
 		{
@@ -45,23 +48,7 @@ namespace CaliburnXamarin.ViewModels
 			NewNotePopupViewModel vm = IoC.Get<NewNotePopupViewModel>( );
 			await _popNav.NavigateToPopupViewModelAsync(vm);
 
-			//return;
-			//Thread.Sleep(1000);
-
-			//// Get Message from the User via Prompt
-			//string msg = await Application.Current.MainPage.DisplayPromptAsync("New Note", "Write your new note", accept: "Add", cancel: "Cancel");
-
-			//Note n = new Note( )
-			//{
-			//	Message = msg
-			//};
-
-
-			//// Add Note to the Collection
-			//Notes.Add(n);
-
 			// Notify of changes
-			//NotifyOfPropertyChange(( ) => Notes);
 			NotifyOfPropertyChange(( ) => NoteCount);
 		}
 
@@ -74,7 +61,7 @@ namespace CaliburnXamarin.ViewModels
 			}
 
 			// Ask User if they are sure
-			bool shouldRemove = await Application.Current.MainPage.DisplayAlert("Remove?", SelectedNote.Message, "Ok", "Cancel");
+			bool shouldRemove = await Application.Current.MainPage.DisplayAlert("Remove?", SelectedNote.Title, "Ok", "Cancel");
 
 			if ( !shouldRemove )
 			{
@@ -84,11 +71,11 @@ namespace CaliburnXamarin.ViewModels
 			// Remove the Note
 			Notes.Remove(SelectedNote);
 			SelectedNote = null;
-
-			// Notify of changes
-			//NotifyOfPropertyChange(( ) => Notes);
-			NotifyOfPropertyChange(( ) => NoteCount);
 		}
 
+		public void UpdateNoteCount(object sender, NotifyCollectionChangedEventArgs e)
+		{
+			NotifyOfPropertyChange(( ) => NoteCount);
+		}
 	}
 }

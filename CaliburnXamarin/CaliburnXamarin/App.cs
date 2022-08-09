@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro.Xamarin.Forms;
+using CaliburnXamarin.Model;
 using CaliburnXamarin.Services;
 using CaliburnXamarin.ViewModels;
 using CaliburnXamarin.ViewModels.Popups;
@@ -54,6 +55,9 @@ namespace CaliburnXamarin
 			// New Note Popup | Does this do anything?
 			_ = _unityContainer.RegisterType<NewNotePopupViewModel>( );
 			_ = _unityContainer.RegisterType<NewNotePopupView>( );
+
+			// Note Model
+			_ = _unityContainer.RegisterType<NotesModel>(TypeLifetime.Singleton);
 		}
 
 		protected override void PrepareViewFirst(NavigationPage navigationPage)

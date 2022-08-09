@@ -6,15 +6,19 @@ namespace CaliburnXamarin.ViewModels.Popups
 {
 	public class NewNotePopupViewModel : Screen
 	{
-		public string NoteTitle { get; set; }
-		public string NoteDesc { get; set; }
+		public string NoteTitleInfo { get; set; }
+		public string NoteDescInfo { get; set; }
 		public string BtnAdd { get; set; }
 		public string BtnCancel { get; set; }
 
+		// User Inputs
+		public string NoteTitleInput { get; set; }
+		public string NoteDescInput { get; set; }
+
 		public NewNotePopupViewModel( )
 		{
-			NoteTitle = "Title";
-			NoteDesc = "Description";
+			NoteTitleInfo = "Title";
+			NoteDescInfo = "Description";
 			BtnAdd = "Add";
 			BtnCancel = "Cancel";
 		}
@@ -23,17 +27,21 @@ namespace CaliburnXamarin.ViewModels.Popups
 		{
 			Note n = new Note( )
 			{
-				Message = ""
+				Title = NoteTitleInput,
+				Description = NoteDescInput
 			};
 
-			IoC.Get<NotesModel>( ).AddNewNote(n);
+			var model = IoC.Get<NotesModel>( );
+			model.AddNewNote(n);
 
-			await TryCloseAsync( );
+			// TODO: Close the Popup
+			//await TryCloseAsync( );
 		}
 
 		public async void Cancel( )
 		{
-			await TryCloseAsync( );
+			// TODO: Close the Popup
+			//await TryCloseAsync( );
 		}
 	}
 }

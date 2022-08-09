@@ -28,15 +28,17 @@
 		Margin="20, 0"
 		BackgroundColor="#945390">
 		<Label
-			Text="{Binding NoteTitle}"
+			Text="{Binding NoteTitleInfo}"
 			HorizontalOptions="Start"/>
 		<Editor
+			Text="{Binding NoteTitleInput}"
 			HorizontalOptions="Fill"/>
 		<Label
-			Text="{Binding NoteDesc}"
+			Text="{Binding NoteDescInfo}"
 			HorizontalOptions="Start"/>
 		<Editor
-			HorizontalOptions="Fill"/>
+				Text="{Binding NoteDescInput}"
+		HorizontalOptions="Fill"/>
 		<StackLayout 
 			Orientation="Horizontal"
 			HorizontalOptions="EndAndExpand">
