@@ -26,7 +26,15 @@
                 cal:Message.Attach="NavSingletonCounter"
                 HorizontalOptions="CenterAndExpand"
                 Margin="5"/>
-
+            
+            <Button
+                x:Name="NavNoteListButton"
+                Text="{Binding NavNoteListButton}"
+                cal:Message.Attach="NavNoteList"
+                HorizontalOptions="CenterAndExpand"
+                Margin="5"/>
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

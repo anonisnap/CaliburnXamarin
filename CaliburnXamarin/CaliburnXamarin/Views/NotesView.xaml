@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="CaliburnXamarin.Views.NotesView"
+	xmlns:cal="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Xamarin.Forms" 
+	xmlns:local_model="clr-namespace:CaliburnXamarin.Model">
+
+	<ContentPage.Content>
+		<StackLayout
+			BackgroundColor="{AppThemeBinding Light=LightBlue, Dark=#557}">
+			<Label
+				Text="{Binding PageInformation}"
+				FontAttributes="Bold"
+				VerticalOptions="Start"
+				HorizontalOptions="CenterAndExpand"/>
+
+			<ListView 
+				ItemsSource="{Binding Notes}"
+				SelectedItem="{Binding SelectedNote}"
+				BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
+				HasUnevenRows="True">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<StackLayout
+								Margin="2"
+								Padding="5"
+								BackgroundColor="{AppThemeBinding Light=LightGray, Dark=DarkGray}">
+								<Label
+									Text="{Binding Title}"
+									TextColor="{AppThemeBinding Light=Black, Dark=White}"
+									FontAttributes="Bold"
+									HorizontalOptions="CenterAndExpand"
+									VerticalOptions="CenterAndExpand"
+									HorizontalTextAlignment="Center"
+									VerticalTextAlignment="Center"/>
+								<Label
+									Text="{Binding Description}"
+									TextColor="{AppThemeBinding Light=#090909, Dark=#E1E1E1}"
+									HorizontalOptions="CenterAndExpand"
+									VerticalOptions="CenterAndExpand"
+									HorizontalTextAlignment="Center"
+									VerticalTextAlignment="Center"/>
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+
+			<StackLayout 
+				Orientation="Horizontal"
+				Margin="15, 5">
+				<Label
+					Text="{Binding NoteCount}"
+					HorizontalOptions="StartAndExpand"
+					VerticalOptions="CenterAndExpand"/>
+
+				
+				<Button
+					Text="{Binding RemoveNoteButton}"
+					cal:Message.Attach="RemoveSelectedNote"
+					HorizontalOptions="End"/>
+				
+				<Button
+					Text="{Binding AddNewNoteButton}"
+					cal:Message.Attach="CreateNewNote"
+					HorizontalOptions="End"/>
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
