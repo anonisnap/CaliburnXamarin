@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+	x:Class="CaliburnXamarin.Views.Popups.NewNotePopupView"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+	xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+	xmlns:cal="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Xamarin.Forms">
+	<!--
+	<pages:PopupPage.Animation>
+		<animations:ScaleAnimation 
+			PositionIn="Center"
+			PositionOut="Center"
+			ScaleIn="1.2"
+			ScaleOut="0.8"
+			DurationIn="4000"
+			DurationOut="3000"
+			EasingIn="SinOut"
+			EasingOut="SinIn"
+			HasBackgroundAnimation="True"/>
+	</pages:PopupPage.Animation>
+	-->
+
+	<StackLayout
+		VerticalOptions="CenterAndExpand" 
+		HorizontalOptions="Fill" 
+		Padding="20"
+		Margin="20, 0"
+		BackgroundColor="#945390">
+		<Label
+			Text="{Binding NoteTitle}"
+			HorizontalOptions="Start"/>
+		<Editor
+			HorizontalOptions="Fill"/>
+		<Label
+			Text="{Binding NoteDesc}"
+			HorizontalOptions="Start"/>
+		<Editor
+			HorizontalOptions="Fill"/>
+		<StackLayout 
+			Orientation="Horizontal"
+			HorizontalOptions="EndAndExpand">
+
+			<Button
+				Text="{Binding BtnAdd}"
+				cal:Message.Attach="AddNote"
+				HorizontalOptions="End"/>
+			<Button
+				Text="{Binding BtnCancel}"
+				cal:Message.Attach="Cancel"
+				HorizontalOptions="End"/>
+		</StackLayout>
+	</StackLayout>
+</pages:PopupPage>
