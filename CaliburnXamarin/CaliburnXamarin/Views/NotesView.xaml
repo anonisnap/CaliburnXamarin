@@ -8,7 +8,7 @@
 
 	<ContentPage.Content>
 		<StackLayout
-			BackgroundColor="LightBlue">
+			BackgroundColor="{AppThemeBinding Light=LightBlue, Dark=#557}">
 			<Label
 				Text="{Binding PageInformation}"
 				FontAttributes="Bold"
@@ -18,15 +18,18 @@
 			<ListView 
 				ItemsSource="{Binding Notes}"
 				SelectedItem="{Binding SelectedNote}"
-				BackgroundColor="White">
+				BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
+				HasUnevenRows="True">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<ViewCell>
 							<StackLayout
 								Margin="2"
-								BackgroundColor="LightGray">
+								Padding="5"
+								BackgroundColor="{AppThemeBinding Light=LightGray, Dark=DarkGray}">
 								<Label
 									Text="{Binding Message}"
+									TextColor="{AppThemeBinding Light=#090909, Dark=#E1E1E1}"
 									HorizontalOptions="CenterAndExpand"
 									VerticalOptions="CenterAndExpand"
 									HorizontalTextAlignment="Center"

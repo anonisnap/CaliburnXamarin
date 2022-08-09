@@ -2,6 +2,8 @@
 using CaliburnXamarin.Model;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace CaliburnXamarin.ViewModels
@@ -25,7 +27,7 @@ namespace CaliburnXamarin.ViewModels
 		public NotesViewModel( )
 		{
 			Notes = new ObservableCollection<Note>( );
-			PageInformation = "Notes";
+			PageInformation = "Temporary Notes";
 			AddNewNoteButton = "Add New";
 			RemoveNoteButton = "Remove";
 		}
@@ -71,6 +73,19 @@ namespace CaliburnXamarin.ViewModels
 			// Notify of changes
 			NotifyOfPropertyChange(( ) => Notes);
 			NotifyOfPropertyChange(( ) => NoteCount);
+		}
+
+		protected override Task OnActivateAsync(CancellationToken cancellationToken)
+		{
+			// Load the notes
+
+			return base.OnActivateAsync(cancellationToken);
+		}
+		protected override Task OnDeactivateAsync(bool close, CancellationToken cancellationToken)
+		{
+			// Save the notes
+
+			return base.OnDeactivateAsync(close, cancellationToken);
 		}
 	}
 }
