@@ -1,5 +1,7 @@
 ﻿using Caliburn.Micro;
+using Caliburn.Micro.Xamarin.Forms;
 using CaliburnXamarin.Model;
+using CaliburnXamarin.Services;
 using CaliburnXamarin.ViewModels.Popups;
 using CaliburnXamarin.Views.Popups;
 using Rg.Plugins.Popup.Contracts;
@@ -14,7 +16,7 @@ namespace CaliburnXamarin.ViewModels
 	public class NotesViewModel : Screen
 	{
 		#region Fields
-		private readonly IPopupNavigation _popNav;
+		private readonly NavigationService _popNav;
 		#endregion
 		#region Properties
 		public string PageInformation { get; set; }
@@ -30,23 +32,25 @@ namespace CaliburnXamarin.ViewModels
 		public Note SelectedNote { get; set; }
 		#endregion
 
-		public NotesViewModel( )
+		public NotesViewModel(NavigationService navigationService)
 		{
 			Notes = new ObservableCollection<Note>( );
 			PageInformation = "Temporary Notes";
 			AddNewNoteButton = "Add New";
 			RemoveNoteButton = "Remove";
 
-			_popNav = PopupNavigation.Instance;
+			_popNav = navigationService;
 		}
 
 		public async void CreateNewNote( )
 		{
-			await _popNav.PushAsync(new NewNotePopupView());
+			//await _popNav.PushAsync();
+			NewNotePopupViewModel vm = IoC.Get<NewNotePopupViewModel>( );
+			await _popNav.NavigateToPopupViewModelAsync(vm);
 
 			return;
 			//Thread.Sleep(1000);
-
+			
 			// Get Message from the User via Prompt
 			string msg = await Application.Current.MainPage.DisplayPromptAsync("New Note", "Write your new note", accept: "Add", cancel: "Cancel");
 

@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro.Xamarin.Forms;
+using CaliburnXamarin.Services;
 using CaliburnXamarin.ViewModels;
 using CaliburnXamarin.ViewModels.Popups;
 using CaliburnXamarin.Views;
@@ -46,7 +47,7 @@ namespace CaliburnXamarin
 			_ = _unityContainer.RegisterType<SingletonCounterView>(TypeLifetime.Singleton);
 
 			// Note List
-			_ = _unityContainer.RegisterType<NotesViewModel>(TypeLifetime.Singleton);
+			_ = _unityContainer.RegisterType<NotesViewModel>(TypeLifetime.Singleton, Invoke.Constructor(Resolve.Parameter( )));
 			_ = _unityContainer.RegisterType<NotesView>(TypeLifetime.Singleton);
 
 			// New Note Popup | Does this do anything?
@@ -56,7 +57,9 @@ namespace CaliburnXamarin
 
 		protected override void PrepareViewFirst(NavigationPage navigationPage)
 		{
-			_ = _unityContainer.RegisterInstance<INavigationService>(new NavigationPageAdapter(navigationPage));
+			NavigationService service = new NavigationService(navigationPage);
+			_ = _unityContainer.RegisterInstance<INavigationService>(service, InstanceLifetime.Singleton);
+			_ = _unityContainer.RegisterInstance(service, InstanceLifetime.Singleton);
 		}
 	}
 }

@@ -20,7 +20,7 @@ namespace CaliburnXamarin.ViewModels.Popups
 
 		public void AddNote( )
 		{
-
+			
 		}
 
 		public void Cancel( )
