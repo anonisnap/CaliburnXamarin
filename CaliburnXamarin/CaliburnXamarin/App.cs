@@ -35,8 +35,8 @@ namespace CaliburnXamarin {
 		/// </summary>
 		private void RegisterViewsAndViewModels( ) {
 			// Navigation
-			_unityContainer.RegisterType<NavigationViewModel>(TypeLifetime.Singleton, Invoke.Constructor(Resolve.Parameter( )));
-			_unityContainer.RegisterType<NavigationView>(TypeLifetime.Singleton);
+			//_unityContainer.RegisterType<NavigationViewModel>(TypeLifetime.Singleton, Invoke.Constructor(Resolve.Parameter( )));
+			//_unityContainer.RegisterType<NavigationView>(TypeLifetime.Singleton);
 
 			// Singleton Counter
 			_unityContainer.RegisterType<SingletonCounterViewModel>(TypeLifetime.Singleton);
