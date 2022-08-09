@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="CaliburnXamarin.Views.NotesView"
+	xmlns:cal="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Xamarin.Forms" 
+	xmlns:local="clr-namespace:CaliburnXamarin.Views.Templates">
+
+	<ContentPage.Content>
+		<StackLayout>
+			<Label
+				Text="{Binding PageInformation}"
+				VerticalOptions="Start"
+				HorizontalOptions="CenterAndExpand"/>
+
+			<ListView 
+				ItemsSource="{Binding Notes}"
+				BackgroundColor="Aqua">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<!--<local:NoteCell/>-->
+						<ViewCell>
+							<StackLayout 
+								Orientation="Vertical">
+								<Label
+									Text="{Binding Message}"
+									HorizontalOptions="CenterAndExpand"
+									HorizontalTextAlignment="Center"/>
+
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+
+			<StackLayout 
+				Orientation="Horizontal"
+				Padding="5">
+				<Label
+					Text="{Binding NoteCount}"
+					HorizontalOptions="StartAndExpand"/>
+
+				<Button
+					Text="{Binding AddNewNoteButton}"
+					cal:Message.Attach="CreateNewNote"
+					HorizontalOptions="End"/>
+			</StackLayout>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

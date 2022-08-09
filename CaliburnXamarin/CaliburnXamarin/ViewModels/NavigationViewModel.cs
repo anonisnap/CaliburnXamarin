@@ -17,6 +17,9 @@ namespace CaliburnXamarin.ViewModels {
         public string NavSingletonCounterButton {
             get; set;
         }
+        public string NavNoteListButton {
+            get; set;
+        }
         #endregion
 
         public NavigationViewModel(INavigationService navigationService) {
@@ -25,6 +28,7 @@ namespace CaliburnXamarin.ViewModels {
             PageInformation = "This is the Main Navigation Screen";
             NavSimpleCounterButton = "Simple Counter";
             NavSingletonCounterButton = "Singleton Counter";
+            NavNoteListButton = "Notes";
         }
 
         #region User Navigation Methods
@@ -35,6 +39,11 @@ namespace CaliburnXamarin.ViewModels {
         public async void NavSingletonCounter( ) {
             Screen newView = IoC.Get<SingletonCounterViewModel>( );
             await _navService.NavigateToViewModelAsync<SingletonCounterViewModel>(newView);
+        }
+
+        public async void NavNoteList( ) {
+            Screen newView = IoC.Get<NotesViewModel>( );
+            await _navService.NavigateToViewModelAsync<NotesViewModel>(newView);
         }
         #endregion
     }
