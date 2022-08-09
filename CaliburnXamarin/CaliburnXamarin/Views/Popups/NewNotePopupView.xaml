@@ -26,10 +26,19 @@
 		HorizontalOptions="Fill" 
 		Padding="20"
 		Margin="20, 0"
-		BackgroundColor="#945390">
-		<Label
-			Text="{Binding NoteTitleInfo}"
-			HorizontalOptions="Start"/>
+		BackgroundColor="#B1D2A9">
+		<StackLayout
+			Orientation="Horizontal">
+			<Label
+				Text="{Binding NoteTitleInfo}"
+				HorizontalOptions="Start"/>
+			<Label 
+				Text="{Binding ErrorNotice}"
+				FontAttributes="Italic"
+				TextColor="Red"
+				HorizontalOptions="EndAndExpand"
+				HorizontalTextAlignment="End"/>
+		</StackLayout>
 		<Editor
 			Text="{Binding NoteTitleInput}"
 			HorizontalOptions="Fill"/>
@@ -37,8 +46,10 @@
 			Text="{Binding NoteDescInfo}"
 			HorizontalOptions="Start"/>
 		<Editor
-				Text="{Binding NoteDescInput}"
-		HorizontalOptions="Fill"/>
+			Text="{Binding NoteDescInput}"
+			HorizontalOptions="Fill"
+			VerticalOptions="EndAndExpand"/>
+		
 		<StackLayout 
 			Orientation="Horizontal"
 			HorizontalOptions="EndAndExpand">
