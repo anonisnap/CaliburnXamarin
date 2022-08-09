@@ -4,30 +4,35 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="CaliburnXamarin.Views.NotesView"
 	xmlns:cal="clr-namespace:Caliburn.Micro.Xamarin.Forms;assembly=Caliburn.Micro.Xamarin.Forms" 
-	xmlns:local="clr-namespace:CaliburnXamarin.Views.Templates">
+	xmlns:local_model="clr-namespace:CaliburnXamarin.Model">
 
 	<ContentPage.Content>
 		<StackLayout>
 			<Label
 				Text="{Binding PageInformation}"
+				FontAttributes="Bold"
 				VerticalOptions="Start"
 				HorizontalOptions="CenterAndExpand"/>
 
 			<ListView 
 				ItemsSource="{Binding Notes}"
 				BackgroundColor="Aqua">
+				<!--<ListView.ItemsSource>
+					<x:Array Type="{x:Type local_model:Note}">
+						<local_model:Note Message="Test Message"/>
+						<local_model:Note Message="Test Message"/>
+						<local_model:Note Message="Test Message"/>
+						<local_model:Note Message="Test Message"/>
+					</x:Array>
+				</ListView.ItemsSource>-->
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<!--<local:NoteCell/>-->
 						<ViewCell>
-							<StackLayout 
-								Orientation="Vertical">
-								<Label
-									Text="{Binding Message}"
-									HorizontalOptions="CenterAndExpand"
-									HorizontalTextAlignment="Center"/>
+							<Label
+								Text="{Binding Message}"
+								HorizontalOptions="CenterAndExpand"
+								HorizontalTextAlignment="Center"/>
 
-							</StackLayout>
 						</ViewCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>

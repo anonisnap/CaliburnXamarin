@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using CaliburnXamarin.Model;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace CaliburnXamarin.ViewModels
 {
@@ -18,7 +19,7 @@ namespace CaliburnXamarin.ViewModels
 			get;
 			set;
 		}
-		public List<Note> Notes
+		public ObservableCollection<Note> Notes
 		{
 			get;
 		}
@@ -26,7 +27,7 @@ namespace CaliburnXamarin.ViewModels
 
 		public NotesViewModel( )
 		{
-			Notes = new List<Note>( );
+			Notes = new ObservableCollection<Note>( );
 			PageInformation = "Notes";
 			AddNewNoteButton = "Add New";
 		}
